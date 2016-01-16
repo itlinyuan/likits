@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 public abstract class BaseDao<T, PK extends Serializable> extends
     HibernateDaoSupport implements Dao<T, PK> {
@@ -49,13 +49,13 @@ public abstract class BaseDao<T, PK extends Serializable> extends
   }
   
   @SuppressWarnings("unchecked")
-  public List<?> find(String queryString){
-    return getHibernateTemplate().find(queryString);
+  public List<T> find(String queryString){
+    return (List<T>) getHibernateTemplate().find(queryString);
   }
   
   @SuppressWarnings("unchecked")
-  public List<?> find(String queryString, Object[] values){
-    return getHibernateTemplate().find(queryString,values);
+  public List<T> find(String queryString, Object[] values){
+    return (List<T>) getHibernateTemplate().find(queryString,values);
   }
   
   public void refresh(T entity){

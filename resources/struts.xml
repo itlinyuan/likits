@@ -4,30 +4,11 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<include file="struts/user.xml"/> 
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
 	
-	<package name="default" namespace="/" extends="struts-default">
-		<!-- 注册拦截器 -->
-		<interceptors>
-		<!-- 为了能在多个动作中方便地引用同一个或几个拦截器，
-		可以使用拦截器栈将这些拦截器作为一个整体来引用。拦截器栈要在<package>
-		标签中使用<interceptors>和子标签<interceptor-stack>来定义。 -->
-			<interceptor name="mytimer" class="com.ly.interceptor.TimerInterceptor"/>
-			<interceptor name="mytimer1" class="com.ly.interceptor.timer2Interceptor"/>
-			<interceptor name="mytimer2" class="com.ly.interceptor.timer3Interceptor"/>
-			<interceptor-stack name="mystack">
-				<interceptor-ref name="mytimer"/>  
-           		<interceptor-ref name="mytimer1"/> 
-           		<interceptor-ref name="mytimer2"/>  
-			</interceptor-stack>
-		</interceptors>
+	<!-- 解决struts和servlet不能共存方法之一 -->
+	<constant name="struts.action.extension" value="action"></constant>
 	
-		<action name="timer" class="com.ly.action.TimerAction">
-			<result name="abc">/success.jsp</result>
-			
-			<!-- 引用拦截器 -->
-			<interceptor-ref name="mystack"/>
-		</action>
-	</package>
 </struts>
