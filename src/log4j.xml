@@ -23,13 +23,8 @@
 		<appender-ref ref="ADMIN"/>
 	</logger>
 	
-	<category name="org.apache.log4j.xml">
-		<priority value="info" />
-	</category>
-
 	<root>
       <priority value="info" />
-      <appender-ref ref="admin" />
       <appender-ref ref="STDOUT" />
    </root>
 
