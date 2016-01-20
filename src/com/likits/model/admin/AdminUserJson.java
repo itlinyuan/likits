@@ -5,6 +5,7 @@ import com.likits.model.ReturnBaseJsonObject;
 public class AdminUserJson extends ReturnBaseJsonObject {
 	private String adminName;
 	private String password;
+	private String roleName;
 	
 	public String getAdminName() {
 		return adminName;
@@ -17,6 +18,12 @@ public class AdminUserJson extends ReturnBaseJsonObject {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 	
 }

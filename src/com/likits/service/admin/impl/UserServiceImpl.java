@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public AdminUserJson findByNameAndPassword(String adminName, String password,String verificationCode) {
+		
 		adminUsers = userDao.findUsers(adminName, password);
 		AdminUserJson auj = new AdminUserJson();
 		String currentVerificationCode = (String) ServletActionContext.getRequest()
@@ -36,6 +37,7 @@ public class UserServiceImpl implements UserService {
 				auj.setTips("登陆成功");
 				auj.setAdminName(adminName);
 				auj.setPassword(password);
+				auj.setRoleName(adminUsers.get(0).getRole().getRoleName());
 			}
 		}
 		

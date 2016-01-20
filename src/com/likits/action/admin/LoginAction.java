@@ -3,6 +3,7 @@ package com.likits.action.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -40,7 +41,13 @@ public class LoginAction {
 //		// 生命周期  
 //		//sourceTypeCookie.setMaxAge(60 * 60 * 24 * 30); // 保存30天  
 //		response.addCookie(sourceTypeCookie);  
-		
+//		
+//		Cookie[] cookies = ServletActionContext.getRequest().getCookies();
+//		for (int i = 0; i < cookies.length; i++) {
+//			Cookie cookie = cookies[i];
+//			log.info(cookie.getName()+"===");
+//		}
+
 		JSONObject json=new JSONObject();
 		json.accumulate("loginStatus", auj);
 		out.println(json.toString());

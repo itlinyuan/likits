@@ -25,7 +25,7 @@
   </context-param>
   
   <servlet>
-    <description></description>
+    <description>生成验证码的servlet</description>
     <display-name>VerificationCodeServlet</display-name>
     <servlet-name>VerificationCodeServlet</servlet-name>
     <servlet-class>com.likits.action.admin.VerificationCodeServlet</servlet-class>

@@ -1,1 +1,1 @@
-struts   拦截器  跟过滤器  servlet
+struts   拦截器  servlet
