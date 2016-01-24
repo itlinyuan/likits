@@ -152,6 +152,14 @@ public class UserServiceImpl implements UserService {
 	public UserJson updateUserActivate(String registerId, String registerEmail) {
 		users = userDao.findByEmail(registerEmail);
 		UserJson uj = new UserJson();
+		
+		if (users.size() == 0) {
+			// 没有该邮箱用户
+			uj.setStatus(-7);
+			uj.setTips(Constances.EMAIL_IS_NOT_REGISTER);
+			return uj;
+		}
+		
 		User user = users.get(0);
 		long nowTime = new Date().getTime();
 		long createTime = user.getCreateDate().getTime();
@@ -167,13 +175,18 @@ public class UserServiceImpl implements UserService {
 		}
 
 		// 未激活且激活码一致
-		if (user.getIsActive() == 0 && user.getRegisterId().equals(registerId)) {
-			user.setIsActive(1);// 激活状态1
-			user.setRegisterId("");// 激活码置为空，防止再次激活
-			userDao.saveOrUpdate(user);
-			uj.setStatus(2);
-			uj.setTips(Constances.EMAIL_ACTIVATION_SUCCESSS);
-			uj.setUsername(user.getUsername());
+		if (user.getIsActive() == 0) {
+			if(user.getRegisterId().equals(registerId)){
+				user.setIsActive(1);// 激活状态1
+				user.setRegisterId("");// 激活码置为空，防止再次激活
+				userDao.saveOrUpdate(user);
+				uj.setStatus(2);
+				uj.setTips(Constances.EMAIL_ACTIVATION_SUCCESSS);
+				uj.setUsername(user.getUsername());
+			}else{
+				uj.setStatus(-6);
+				uj.setTips(Constances.INVAILD_ACTIVATION_CODE);
+			}
 		} else {//已经激活了
 			uj.setStatus(-5);
 			uj.setTips(Constances.RECONDITIONING);
