@@ -4,11 +4,33 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
-		<!-- 这里使用spring容器，class=“loginAction” 
+		<!-- 这里使用spring容器，class=“adminLoginAction” 
 		     是applicationContext里的一个bean，这里是在spring里配置（也可以直接注解LoginAction）
 		     若用struts容器，应为class=“com.likits.action.admin.LoginAction” -->
 		<action name="adminLogin"  
-            class="loginAction" method="login">  
+            class="adminLoginAction" method="login">  
+        </action>
+        
+        <action name="userRegister"  
+            class="registerAndLoginAction" method="register">  
+            
+           <!-- 防止重复提交表单需要的拦截器 -->
+           <interceptor-ref name="tokenSession"></interceptor-ref>
+           <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <action name="userMailBack"  
+            class="registerAndLoginAction" method="mailBack">
+        </action>
+        
+        <action name="userLogin"  
+            class="registerAndLoginAction" method="login">  
+           <interceptor-ref name="tokenSession"></interceptor-ref>
+           <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        
+        <action name="userLogout"  
+            class="registerAndLoginAction" method="logout">  
         </action>
 	</package>
 	

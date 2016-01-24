@@ -1,4 +1,15 @@
- 
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+
+	response.setHeader("Cache-Control","no-cache"); 
+	response.setHeader("Cache-Control","no-store");  //和上面的参数不一样
+	response.setDateHeader("Expires", 0); 
+	response.setHeader("Pragma","no-cache"); 
+%>
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE>
 <html lang="en">
 <head>
@@ -25,7 +36,7 @@
 				<ul class="top_choice">
 					<li><a href="#">个人主页</a></li>
 					<li><a href="#">设置</a></li>
-					<li><a href="#">退出</a></li>
+					<li><a href="userLogout.action">退出</a></li>
 				</ul>
 			</div>
 			<div class="top_search">
@@ -100,6 +111,11 @@
 					<img class="slogan_1" src="assets/images/slogan_1.png" />
 					<img class="slogan_2" src="assets/images/slogan_2.png" />
 				</div>
+				<%
+					HttpSession sessions=request.getSession();
+					if(sessions.getAttribute("currentLoginUser")==null)
+					{
+				%>
 				<div class="regi_login">
 					<div class="tab_links">
 						<a class="active" href="">注册</a>
@@ -108,9 +124,10 @@
 					<div class="tab_cons clearfix">
 						<div class="tab_con tab_con_1 clearfix active">
 							<div class="regi_form">
-								<form method="GET" action="#">
+								<form method="POST" action="userRegister.action">
 									<input type="text" name="email" autocomplete="off" placeholder="常用邮箱" />
 									<input type="password" name="password" autocomplete="off" placeholder="设置密码" />
+									<s:token></s:token>
 									<button type="submit" class="regi_form_button">注 册
 									</button>
 								</form>
@@ -126,9 +143,10 @@
 						</div>
 						<div class="tab_con tab_con_2 clearfix">
 							<div class="regi_form">
-								<form method="GET" action="#">
+								<form method="POST" action="userLogin.action">
 									<input type="text" name="email" autocomplete="off" placeholder="邮箱" />
 									<input type="password" name="password" autocomplete="off" placeholder="密码" />
+									<s:token></s:token>
 									<button type="submit" class="regi_form_button">登 录
 									</button>
 								</form>
@@ -145,6 +163,9 @@
 					</div>
 				</div>
 			</div>
+			<%
+				}
+			%>
 		</div>
 		<div class="bg_con">
 			<div class="content">

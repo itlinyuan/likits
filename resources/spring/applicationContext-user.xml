@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-
-	<bean id="loginAction" class="com.likits.action.admin.LoginAction">
+	<!-- 前台 -->
+	<bean id="registerAndLoginAction" class="com.likits.action.front.RegisterAndLoginAction">
+		<property name="userService" ref="userService"></property>
+		<property name="emailSenderUser" value="${emailSender_user}"></property>
+		<property name="emailSenderPassword" value="${emailSender_password}"></property>
+		<property name="emailSenderHost" value="${emailSender_hostName}"></property>
+	</bean>
+	
+	<bean id="userService" class="com.likits.service.front.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	
+	<!-- 后台管理系统  -->
+	<bean id="adminLoginAction" class="com.likits.action.admin.LoginAction">
 		<property name="userService" ref="adminUserService"></property>
 	</bean>
 	

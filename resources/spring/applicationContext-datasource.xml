@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -14,7 +17,7 @@
 	</bean>
 
 	<!-- MySQL Session Factory -->
-	<bean id="mysqlSessionFactory"
+	<bean id="mySessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 
@@ -23,6 +26,8 @@
 			<list>
 				<value>com.likits.entity.admin.AdminUser</value>
 				<value>com.likits.entity.admin.AdminRole</value>
+				<value>com.likits.entity.front.Team</value>
+				<value>com.likits.entity.front.User</value>
 				<!-- 
 				<value>com.ly.entity.post</value> 直接加实体类
 				 -->
@@ -51,10 +56,26 @@
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory">
-			<ref local="mysqlSessionFactory" />
+			<ref local="mySessionFactory" />
 		</property>
 	</bean>
 
+	<!-- hibernate出现read-only时在这里改 -->
+ 	<aop:config>
+		<aop:pointcut id="txServices" expression="execution(* com.likits.service..*.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txServices"/>
+	</aop:config>
+
+ 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+  		<tx:attributes>
+   		<tx:method name="get*" read-only="false" propagation="NOT_SUPPORTED"/>
+   		<tx:method name="find*" read-only="false" propagation="REQUIRED"/>
+   		<tx:method name="save*" propagation="REQUIRED"/> <!-- 如果不把save update delete都配置上，这些操作会无效  -->
+   		<tx:method name="update*" propagation="REQUIRED"/> 
+   		<tx:method name="delete*" propagation="REQUIRED"/>
+  		<tx:method name="register*" propagation="REQUIRED"/>
+  		</tx:attributes>
+	</tx:advice>
 	<tx:annotation-driven />
 
 </beans>

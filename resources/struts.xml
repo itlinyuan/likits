@@ -5,6 +5,7 @@
 
 <struts>
 	<include file="struts/user.xml"/> 
+	
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
 	

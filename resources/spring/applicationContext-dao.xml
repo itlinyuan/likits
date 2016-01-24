@@ -4,9 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                         ">
-
+	<!-- 前台Dao -->
+	<bean id="userDao" class="com.likits.dao.front.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	
+	
+	<!-- 后台管理系统Dao -->
 	<bean id="adminUserDao" class="com.likits.dao.admin.impl.UserDaoImpl">
-		<property name="sessionFactory" ref="mysqlSessionFactory" />
+		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 
 </beans>

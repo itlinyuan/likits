@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>likits</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
   <filter>
@@ -34,5 +34,9 @@
     <servlet-name>VerificationCodeServlet</servlet-name>
     <url-pattern>/VerificationCodeServlet</url-pattern>
   </servlet-mapping>
-  
+	
+	<!-- session 30分钟后过期 -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 </web-app>
