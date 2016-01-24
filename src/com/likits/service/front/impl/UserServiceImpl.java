@@ -35,12 +35,12 @@ public class UserServiceImpl implements UserService {
 	private List<User> users;
 
 	@Override
-	public UserJson register(String senderEmail, String senderPassword, String sernderHost, String registerEmail,
-			String registerPassword) {
+	public UserJson register(final String senderEmail,final String senderPassword, final String sernderHost, String registerEmail,
+			final String registerPassword) {
 		HttpServletRequest req = ServletActionContext.getRequest();
 		// 去掉两边空格
 		registerEmail = registerEmail.trim();
-		String toMail = registerEmail;
+		final String toMail = registerEmail;
 
 		UserJson uj = new UserJson();
 		if (registerEmail.equals("") || registerEmail == null) {
@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 		for (int i = 0; i < URLs.length - 1; i++) {
 			currentURL += URLs[i] + "/";
 		}
-		String url = currentURL + "userMailBack.action?registerId=" + registerId + "&registerEmail=" + registerEmail;// 待会用户点在邮箱中点击这个链接回到你的网站。
+		final String url = currentURL + "userMailBack.action?registerId=" + registerId + "&registerEmail=" + registerEmail;// 待会用户点在邮箱中点击这个链接回到你的网站。
 
 		// HttpSession httpSession = req.getSession();
 		// httpSession.setAttribute(registerId, registerEmail);
