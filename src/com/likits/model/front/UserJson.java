@@ -17,6 +17,7 @@ public class UserJson extends ReturnBaseJsonObject{
 		private int level;
 		private int score;
 		private String image;
+		private boolean isLogin;
 		
 		//--------getter&setter---------
 
@@ -98,6 +99,14 @@ public class UserJson extends ReturnBaseJsonObject{
 
 		public void setImage(String image) {
 			this.image = image;
+		}
+
+		public boolean isLogin() {
+			return isLogin;
+		}
+
+		public void setLogin(boolean isLogin) {
+			this.isLogin = isLogin;
 		}
 
 	

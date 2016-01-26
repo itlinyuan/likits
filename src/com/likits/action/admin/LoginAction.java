@@ -3,12 +3,12 @@ package com.likits.action.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.web.util.WebUtils;
 
 import com.likits.model.admin.AdminUserJson;
 import com.likits.service.admin.UserService;
@@ -36,7 +36,8 @@ public class LoginAction {
 		//将要被返回到客户端的对象
 		AdminUserJson auj = userService.findByNameAndPassword(adminName, password, verificationCode);
 		
-		ServletActionContext.getRequest().getSession().setAttribute("currentAdmin", auj);
+		WebUtils.setSessionAttribute(ServletActionContext.getRequest(), "currentAdmin", auj);
+		//ServletActionContext.getRequest().getSession().setAttribute("currentAdmin", auj);
 //		Cookie sourceTypeCookie = new Cookie("currentAdmin", auj.toString());  
 //		// 生命周期  
 //		//sourceTypeCookie.setMaxAge(60 * 60 * 24 * 30); // 保存30天  

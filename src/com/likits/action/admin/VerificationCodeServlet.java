@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.struts2.ServletActionContext;
+import org.springframework.web.util.WebUtils;
+
 import com.likits.util.RandomValidateCodeUtil;
 
 
@@ -23,9 +26,10 @@ public class VerificationCodeServlet extends HttpServlet {
           
         //生成随机字串  
         String verifyCode = RandomValidateCodeUtil.generateVerifyCode(4);  
-        //存入会话session  
-        HttpSession session = request.getSession(true);  
-        session.setAttribute("randVerificationCode", verifyCode.toLowerCase());  
+        //存入会话session 
+        WebUtils.setSessionAttribute(request, "randVerificationCode", verifyCode.toLowerCase());
+//      HttpSession session = request.getSession(true);  
+//      session.setAttribute("randVerificationCode", verifyCode.toLowerCase());  
         //System.out.println(verifyCode.toLowerCase());
         //生成图片  
         int w = 120, h = 40;  

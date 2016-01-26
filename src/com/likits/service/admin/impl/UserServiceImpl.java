@@ -3,6 +3,7 @@ package com.likits.service.admin.impl;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
+import org.springframework.web.util.WebUtils;
 
 import com.likits.dao.admin.UserDao;
 import com.likits.entity.admin.AdminUser;
@@ -20,8 +21,9 @@ public class UserServiceImpl implements UserService {
 		
 		adminUsers = userDao.findUsers(adminName, password);
 		AdminUserJson auj = new AdminUserJson();
-		String currentVerificationCode = (String) ServletActionContext.getRequest()
-				.getSession().getAttribute("randVerificationCode");
+		String currentVerificationCode = (String)WebUtils.getSessionAttribute(ServletActionContext.getRequest(), "randVerificationCode");
+//		String currentVerificationCode = (String) ServletActionContext.getRequest()
+//				.getSession().getAttribute("randVerificationCode");
 		
 		if(!currentVerificationCode.toLowerCase().equals(verificationCode)){
 			auj.setStatus(0);//<=0为错误码

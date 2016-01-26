@@ -8,7 +8,7 @@
 	<!-- environment -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
       <property name="locations">
-         <value>classpath:conf/enviroment.properties</value>
+         <value>classpath:conf/environment.properties</value>
       </property>
    </bean>
 </beans>

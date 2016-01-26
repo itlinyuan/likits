@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.web.util.WebUtils;
 
 import com.likits.model.ReturnBaseJsonObject;
 import com.likits.model.front.UserJson;
@@ -101,6 +102,7 @@ public class RegisterAndLoginAction {
 //		rbjo.setStatus(1);
 //		rbjo.setTips(Constances.LOGOUT_SUCCESSS);
 		
+		//若存在会话则返回该会话，否则返回NULL
 		request.getSession(false);  		
 		request.getSession().removeAttribute("currentLoginUser");
 		response.setHeader("refresh","0;URL=index.jsp");

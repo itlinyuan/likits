@@ -20,6 +20,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.util.WebUtils;
 
 import com.likits.dao.front.UserDao;
 import com.likits.entity.front.User;
@@ -198,6 +199,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserJson findUser(String loginEmail, String loginPassword) {
 		HttpServletRequest req = ServletActionContext.getRequest();
+		
+		//查看是否已经登录
+//		if(WebUtils.getSessionAttribute(req, "currentLoginUser")!=null){
+//			return (UserJson) WebUtils.getSessionAttribute(req, "currentLoginUser");
+//		}
+//		if(req.getSession().getAttribute("currentLoginUser")!=null){
+//			return (UserJson) req.getSession().getAttribute("currentLoginUser");
+//		}
 
 		users = userDao.findByEmail(loginEmail);
 		UserJson uj = new UserJson();
@@ -267,9 +276,11 @@ public class UserServiceImpl implements UserService {
 				uj.setPersonSignature(user.getPersonSignature());
 				uj.setRecentDate(user.getRecentDate());
 				uj.setBirthday(user.getBirthday());
-
-				HttpSession httpSession = req.getSession();
-				httpSession.setAttribute("currentLoginUser", loginEmail);
+				uj.setLogin(true);
+				
+				WebUtils.setSessionAttribute(req, "currentLoginUser", uj);
+//				HttpSession httpSession = req.getSession();
+//				httpSession.setAttribute("currentLoginUser", uj);
 				//log.info(httpSession.getAttribute("currentLoginUser") + "======");
 			} else {
 				// 登陆次数验证
