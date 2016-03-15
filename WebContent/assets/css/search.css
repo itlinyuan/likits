@@ -1,0 +1,225 @@
+/*
+author: linjie
+modified date : 2016/1/4
+*/
+
+@charset "utf-8";
+
+.inside .nav_container {
+	position: static;
+}
+
+/* content 内容体 */
+.bg_con {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #f7f9f8;
+}
+.content {
+	position: relative;
+	width: 1080px;
+	margin: 35px auto;
+}
+/* 搜索框 */
+.search_form {
+	position: relative;
+	width: 574px;
+	height: 32px;
+	margin: 0 auto 35px;
+	border: 1px #cbcbcb solid;
+	text-align: left;
+	background: #fff;
+	-o-transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.search_form.active {
+	box-shadow: 0px 0px 3px #777373;
+	-o-transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.search_form_text {
+	display: inline;
+	width: 445px;
+	height: 32px;
+	font-size: 16px;
+	color: #333;
+	padding-left: 10px;
+	border: none;
+	outline: none;
+}
+.search_form_button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 120px;
+	height: 32px;
+	font-size: 14px;
+	color: #fff;
+	border: none;
+	outline: none;
+    background: #04a3a3;
+	cursor: pointer;
+}
+/* 搜索nav */
+.search_navs {
+	width: 441px;
+	margin: 0 auto;
+}
+.search_nav {
+	float: left;
+	width: 147px;
+	height: 47px;
+	line-height: 47px;
+	border-top: 4px solid #f7f9f8;
+}
+.search_nav.current {
+	background: #fff;
+	border-top: 4px solid #44c8b0;
+}
+.search_nav.current a {
+	color: #44c8b0;
+}
+.search_nav a {
+	color: #333;
+	font-size: 15px;
+	-o-transition: color .5s ease;
+	-webkit-transition: color .5s ease;
+	-moz-transition: color .5s ease;
+	transition: color .5s ease;
+}
+.search_nav a:hover {
+	color: #44c8b0;
+	text-decoration: none;
+}
+/* 搜索内容 */
+.search_content {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #fff;
+	padding: 15px;
+	text-align: left;
+}
+.search_left {
+	width: 708px;
+}
+.search_title {
+	border-left: 4px #33e2c0 solid;
+	font-size: 18px;
+	color: #333;
+	padding: 5px 0 5px 15px;
+	margin-bottom: 20px;
+}
+
+.news_con {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	padding: 15px 0 20px;
+	border-bottom: 1px solid #e5e5e5;
+	box-sizing: border-box;
+	
+}
+.news_img {
+	width: 160px;
+	height: 105px;
+}
+.news_detail {
+	width: 515px;
+}
+.news_con a:hover {
+	text-decoration: none;
+}
+.news_con h1 {
+	margin: 8px 0;
+	font-size: 18px;
+	color: #333;
+	font-weight: bold;
+	-o-transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.news_con a:hover h1 {
+	color: #44c8b0;
+	-o-transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.news_con h2 {
+	color: #999;
+	font-size: 10px;
+	margin-top: 12px;
+}
+.news_con p {
+	font-size: 12px;
+	color: #757474;
+	line-height: 22px;
+	padding-right: 22px;
+}
+.search_right {
+	margin-left: 90px;
+}
+.search_more {
+	margin: 5px 0;
+	font-size: 12px;
+	color: #777;
+}
+.search_more:hover {
+	text-decoration: none;
+}
+.search_more img {
+	margin-left: 3px;
+	-webkit-transition: -webkit-transform 500ms ease-in;
+	-ms-transition: -ms-transform 500ms ease-in;
+	transition: transform 500ms ease-in;
+}
+.search_more:hover img {
+	transform: translateX(3px);
+	-ms-transform: translateX(3px);
+	-webkit-transform: translateX(3px);
+	-webkit-transition: -webkit-transform 500ms ease-in;
+	-ms-transition: -ms-transform 500ms ease-in;
+	transition: transform 500ms ease-in;
+}
+.search_users {
+	margin: 10px 0 50px;
+}
+.search_user {
+	margin-bottom: 25px;
+}
+.search_user a:hover .username {
+	color: #757474;
+	transform: translateX(5px);
+	-ms-transform: translateX(5px);
+	-webkit-transform: translateX(5px);
+	-webkit-transition: -webkit-transform 500ms ease-in;
+	-ms-transition: -ms-transform 500ms ease-in;
+	transition: transform 500ms ease-in;
+}
+.user_img {
+	width: 53px;
+	height: 52px;
+}
+.user_detail {
+	margin-left: 23px;
+}
+.search_user .username {
+	margin-top: 2px;
+	font-size: 14px;
+	color: #333;
+	-webkit-transition: -webkit-transform 500ms ease-in;
+	-ms-transition: -ms-transform 500ms ease-in;
+	transition: transform 500ms ease-in;
+}
+.search_user p {
+	font-size: 12px;
+	color: #757474;
+	margin-top: 8px;
+}
