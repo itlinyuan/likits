@@ -1,4 +1,16 @@
- 
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+
+	response.setHeader("Cache-Control","no-cache"); 
+	response.setHeader("Cache-Control","no-store");  //和上面的参数不一样
+	response.setDateHeader("Expires", 0); 
+	response.setHeader("Pragma","no-cache"); 
+%>
+<%@taglib uri="/struts-tags" prefix="s" %>
+  
 <!DOCTYPE>
 <html lang="en">
 <head>
@@ -15,7 +27,7 @@
 	<div class="nav_container">
 		<div class="nav clearfix">
 			<!-- logo -->
-			<a class="top_logo" href="index.html">
+			<a class="top_logo" href="index.jsp">
 				<img src="assets/images/logo.png" alt="">
 			</a>
 			<!-- message -->
@@ -32,9 +44,9 @@
 				</ul>
 			</div>
 			<div class="top_pass">
-				<a href="pass.html">登录</a>
+				<a href="pass.jsp">登录</a>
 				<span class="line"></span>
-				<a href="pass.html?pass=regi" class="top_pass_regi">注册</a>
+				<a href="pass.jsp?pass=regi" class="top_pass_regi">注册</a>
 			</div>
 			<!-- 搜素 -->
 			<div class="top_search">

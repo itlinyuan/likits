@@ -1,4 +1,15 @@
- 
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+
+	response.setHeader("Cache-Control","no-cache"); 
+	response.setHeader("Cache-Control","no-store");  //和上面的参数不一样
+	response.setDateHeader("Expires", 0); 
+	response.setHeader("Pragma","no-cache"); 
+%>
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE>
 <html lang="en">
 <head>
@@ -25,9 +36,10 @@
 				<div class="tab_cons clearfix">
 					<div class="tab_con tab_con_1 clearfix active">
 						<div class="regi_form">
-							<form action="javascript:;" id="login_form">
+							<form action="userLogin.action" id="login_form">
 								<input type="text" name="email" id="login_mail" autocomplete="off" placeholder="用户名或邮箱" />
 								<input type="password" name="password" id="login_pass" autocomplete="off" placeholder="密码" />
+								<s:token></s:token>
 								<input type="submit" class="regi_form_button" id="login_button" value="登 录" />
 								<div class="choice">
 									<label class="fl auto_login">

@@ -10,6 +10,7 @@
 	response.setHeader("Pragma","no-cache"); 
 %>
 <%@taglib uri="/struts-tags" prefix="s" %>
+ 
 <!DOCTYPE>
 <html lang="en">
 <head>
@@ -22,27 +23,36 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css" />
 	
 </head>
-<body>
+<body id="no_login">
 	<div class="nav_container">
 		<div class="nav clearfix">
-			<a class="top_logo" href="index.html">
+			<!-- logo -->
+			<a class="top_logo" href="index.jsp">
 				<img src="assets/images/logo.png" alt="">
 			</a>
+			<!-- message -->
 			<div class="top_mess">
 				<a href="#">消息</a>
 			</div>
+			<!-- 个人 -->
 			<div class="top_profile">
 				<a href="#" class="top_profile_link">周周周周煜瑶</a>
 				<ul class="top_choice">
 					<li><a href="#">个人主页</a></li>
 					<li><a href="#">设置</a></li>
-					<li><a href="userLogout.action">退出</a></li>
+					<li><a href="#">退出</a></li>
 				</ul>
 			</div>
+			<div class="top_pass">
+				<a href="pass.jsp">登录</a>
+				<span class="line"></span>
+				<a href="pass.jsp?pass=regi" class="top_pass_regi">注册</a>
+			</div>
+			<!-- 搜索 -->
 			<div class="top_search">
-				<form method="GET" action="#" class="top-search-form">
+				<form method="GET" action="search.jsp" class="top-search-form">
 					<input type="text" class="top-search-input" name="q" autocomplete="off" value="" placeholder="搜索" />
-					
+					<!-- 下拉框 -->
 					<div class="search_choices">
 						<input type="text" class="search_link" value="首页" />
 						<ul class="search_choice">
@@ -50,15 +60,17 @@
 							<li><a class="search_choice_link" href="javascript:;">讨论区</a></li>
 						</ul>
 					</div>
-
+					
+					<!-- submit -->
 					<button type="submit" class="top-search-button">
 					</button>
 				</form>
 			</div>
+			<!-- 导航栏菜单 -->
 			<div class="top_nav">
 				<ul class="clearfix">
 					<li class="top_menu current">
-						<a class="top_menu_link" href="index.html">首页</a>
+						<a class="top_menu_link" href="index.jsp">首页</a>
 						<ul class="top_choice index">
 							<li><a href="#">球队队服</a></li>
 							<li><a href="#">足球品牌</a></li>
@@ -86,6 +98,7 @@
 	</div>
 	<div class="bg">
 		<div class="bg_slides">
+			<!-- 轮播 -->
 			<div class="slides" id="slide">
 				<ul>
 					<input type="radio" name="radio-btn" class="radio-btn" id="img-1" checked />
@@ -106,16 +119,12 @@
 					<label class="tab_dot" for="img-2" id="img-dot-2"></label>
 				</div>
 			</div>
+			<!-- 中间登录注册 -->
 			<div class="bg_center">
 				<div class="slogan">
 					<img class="slogan_1" src="assets/images/slogan_1.png" />
 					<img class="slogan_2" src="assets/images/slogan_2.png" />
 				</div>
-				<%
-					HttpSession sessions=request.getSession();
-					if(sessions.getAttribute("currentLoginUser")==null)
-					{
-				%>
 				<div class="regi_login">
 					<div class="tab_links">
 						<a class="active" href="">注册</a>
@@ -124,56 +133,50 @@
 					<div class="tab_cons clearfix">
 						<div class="tab_con tab_con_1 clearfix active">
 							<div class="regi_form">
-								<form method="POST" action="userRegister.action">
-									<input type="text" name="email" autocomplete="off" placeholder="常用邮箱" />
-									<input type="password" name="password" autocomplete="off" placeholder="设置密码" />
-									<s:token></s:token>
-									<button type="submit" class="regi_form_button">注 册
-									</button>
+								<form action="javascript:;" id="regi_form">
+									<input type="text" name="email" id="regi_mail"  autocomplete="off" placeholder="常用邮箱" />
+									<input type="password" name="password" id="regi_pass" autocomplete="off" placeholder="设置密码" />
+									<input type="submit" class="regi_form_button" id="regi_button" value="注 册" />
 								</form>
 							</div>
 							<div class="regi_other">
 								<p>其他账号注册</p>
 								<div class="regi_other_link">
-									<a href="#"><img src="assets/images/qq.png"></a>
-									<a href="#"><img src="assets/images/wechat.png"></a>
-									<a href="#"><img src="assets/images/weibo.png"></a>
+									<a href="javascript:;"><img src="assets/images/qq.png"></a>
+									<a href="javascript:;"><img src="assets/images/wechat.png"></a>
+									<a href="javascript:;"><img src="assets/images/weibo.png"></a>
 								</div>
 							</div>
 						</div>
 						<div class="tab_con tab_con_2 clearfix">
 							<div class="regi_form">
-								<form method="POST" action="userLogin.action">
-									<input type="text" name="email" autocomplete="off" placeholder="邮箱" />
-									<input type="password" name="password" autocomplete="off" placeholder="密码" />
-									<s:token></s:token>
-									<button type="submit" class="regi_form_button">登 录
-									</button>
+								<form action="javascript:;" id="login_form">
+									<input type="text" name="email" id="login_mail" autocomplete="off" placeholder="邮箱" />
+									<input type="password" name="password" id="login_pass" autocomplete="off" placeholder="密码" />
+									<input type="submit" class="regi_form_button" id="login_button" value="登 录" />
 								</form>
 							</div>
 							<div class="regi_other">
 								<p>其他账号登录</p>
 								<div class="regi_other_link">
-									<a href="#"><img src="assets/images/qq.png"></a>
-									<a href="#"><img src="assets/images/wechat.png"></a>
-									<a href="#"><img src="assets/images/weibo.png"></a>
+									<a href="javascript:;"><img src="assets/images/qq.png"></a>
+									<a href="javascript:;"><img src="assets/images/wechat.png"></a>
+									<a href="javascript:;"><img src="assets/images/weibo.png"></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<%
-				}
-			%>
 		</div>
+		<!-- 内容体 -->
 		<div class="bg_con">
 			<div class="content">
 				<div class="clearfix">
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img class="" src="assets/images/img_1.jpg">
+								<img class="" src="assets/images/img1/img_1.jpg">
 							</div>
 							<h1 class="news_title">我们是第一</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -187,7 +190,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_2.jpg">
+								<img src="assets/images/img1/img_2.jpg">
 							</div>
 							<h1 class="news_title">你猜他们看什么</h1>
 							<h2 class="news_date">2015-12-21</h2>
@@ -201,7 +204,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_3.jpg">
+								<img src="assets/images/img1/img_3.jpg">
 							</div>
 							<h1 class="news_title">这个足球场超级大</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -215,7 +218,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_4.jpg">
+								<img src="assets/images/img1/img_4.jpg">
 							</div>
 							<h1 class="news_title">我们是第一</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -229,7 +232,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_5.jpg">
+								<img src="assets/images/img1/img_5.jpg">
 							</div>
 							<h1 class="news_title">我们是第一</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -243,7 +246,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_6.jpg">
+								<img src="assets/images/img1/img_6.jpg">
 							</div>
 							<h1 class="news_title">我们是第一</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -257,7 +260,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_7.jpg">
+								<img src="assets/images/img1/img_7.jpg">
 							</div>
 							<h1 class="news_title">这个足球场超级大</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -271,7 +274,7 @@
 					<div class="news_con">
 						<a href="#">
 							<div class="news_img">
-								<img src="assets/images/img_8.jpg">
+								<img src="assets/images/img1/img_8.jpg">
 							</div>
 							<h1 class="news_title">我们是第一</h1>
 							<h2 class="news_date">2015-12-25</h2>
@@ -281,267 +284,275 @@
 							</p>
 							<span class="news_tag tag_article">文章</span>
 						</a>
-					</div>					<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_9.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
+					</div>					
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_9.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_10.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_11.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_news">资讯</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_12.jpg">
+							</div>
+							<h1 class="news_title">就是这么man</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_13.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_video">视频</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_14.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_15.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_16.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_17.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_18.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_19.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_20.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_21.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_22.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_23.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
+					<div class="news_con">
+						<a href="#">
+							<div class="news_img">
+								<img src="assets/images/img1/img_24.jpg">
+							</div>
+							<h1 class="news_title">我们是第一</h1>
+							<h2 class="news_date">2015-12-25</h2>
+							<p>
+								<span class="news_watch">11</span>
+								<span class="news_like">20</span>
+							</p>
+							<span class="news_tag tag_article">文章</span>
+						</a>
+					</div>
 				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_10.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
+				<div class="paging">
+					<a href="#" class="first_page">首页</a>
+					<a href="#" class="page_num current">1</a>
+					<a href="#" class="page_num">2</a>
+					<a href="#" class="page_num">3</a>
+					<a href="#" class="page_num">4</a>
+					<span>...</span>
+					<a href="#" class="page_num">99</a>
+					<a href="#" class="page_num">100</a>
+					<a href="#" class="prev_page"><img src="assets/images/prev.png"></a>
+					<a href="#" class="next_page"><img src="assets/images/next.png"></a>
+					<a href="#" class="last_page">尾页</a>
 				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_11.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_news">资讯</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_12.jpg">
-						</div>
-						<h1 class="news_title">就是这么man</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_13.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_video">视频</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_14.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_15.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_16.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_17.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_18.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_19.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_20.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_21.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_22.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_23.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-				<div class="news_con">
-					<a href="#">
-						<div class="news_img">
-							<img src="assets/images/img_24.jpg">
-						</div>
-						<h1 class="news_title">我们是第一</h1>
-						<h2 class="news_date">2015-12-25</h2>
-						<p>
-							<span class="news_watch">11</span>
-							<span class="news_like">20</span>
-						</p>
-						<span class="news_tag tag_article">文章</span>
-					</a>
-				</div>
-			</div>
-			<div class="paging">
-				<a href="#" class="first_page">首页</a>
-				<a href="#" class="page_num current">1</a>
-				<a href="#" class="page_num">2</a>
-				<a href="#" class="page_num">3</a>
-				<a href="#" class="page_num">4</a>
-				<span>...</span>
-				<a href="#" class="page_num">99</a>
-				<a href="#" class="page_num">100</a>
-				<a href="#" class="prev_page"><img src="assets/images/prev.png"></a>
-				<a href="#" class="next_page"><img src="assets/images/next.png"></a>
-				<a href="#" class="last_page">尾页</a>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="footer">
-	<div class="links">
-		<a href="#">网站声明</a>
-		<a href="#">联系我们</a>
-		<a href="#">免责条款</a>
-		<a href="#">隐私政策</a>
-		<a href="#">广告服务</a>
+	<!-- 底部 -->
+	<div class="footer">
+		<div class="links">
+			<a href="#">网站声明</a>
+			<a href="#">联系我们</a>
+			<a href="#">免责条款</a>
+			<a href="#">隐私政策</a>
+			<a href="#">广告服务</a>
+		</div>
+		<div class="copying">
+			<span>
+				Copying@2016       绿壳网
+			</span>
+		</div>
 	</div>
-	<div class="copying">
-		<span>
-			Copying@2016       绿壳网
-		</span>
+	<!-- 回到顶部 -->
+	<div id="pagetop">
+		<a href="#">Page Top</a>
 	</div>
-</div>
-<div id="pagetop">
-	<a href="#">Page Top</a>
-</div>
+	<div class="tips">
+		<span>暂不支持此功能</span>
+	</div>
 
-<script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
-<script src="assets/js/index.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="assets/js/Main.js"></script>
+	<script type="text/javascript" src="http://120.27.96.114:8080/likits/assets/js/pass.js"></script>
+	<script src="assets/js/index.js"></script>
 
 </body>
 </html>
