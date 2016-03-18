@@ -14,9 +14,9 @@
         <action name="userRegister"  
             class="registerAndLoginAction" method="register">  
             
-           <!-- 防止重复提交表单需要的拦截器 -->
+           <!-- 防止重复提交表单需要的拦截器 
            <interceptor-ref name="tokenSession"></interceptor-ref>
-           <interceptor-ref name="defaultStack"></interceptor-ref>
+           <interceptor-ref name="defaultStack"></interceptor-ref>-->
         </action>
         
         <action name="userMailBack"  

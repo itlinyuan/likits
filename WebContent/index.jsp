@@ -551,7 +551,7 @@
 
 	<script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
 	<script type="text/javascript" src="assets/js/Main.js"></script>
-	<script type="text/javascript" src="http://120.27.96.114:8080/likits/assets/js/pass.js"></script>
+	<script type="text/javascript" src="assets/js/pass.js"></script>
 	<script src="assets/js/index.js"></script>
 
 </body>

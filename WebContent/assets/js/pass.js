@@ -7,7 +7,7 @@
 
 (function(w) {
 
-	var xurl = 'http://120.27.96.114:8080/likits/',
+	var xurl = 'http://localhost:8080/likits/',
 
 		XPASS = {
 
