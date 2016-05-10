@@ -13,6 +13,20 @@
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 	
+	<bean id="exhibitionAction" class="com.likits.action.front.ExhibitionAction" scope="prototype">
+		<property name="recommendService" ref="recommendService"></property>
+		<property name="articleService" ref="articleService"></property>		
+	</bean>
+	
+	<bean id="recommendService" class="com.likits.service.front.impl.RecommendServiceImpl">
+		<property name="articleDao" ref="articleDao"></property>
+	</bean>
+	
+	<bean id="articleService" class="com.likits.service.front.impl.ArticleServiceImpl">
+		<property name="articleDao" ref="articleDao"></property>
+	</bean>
+	
+
 	
 	<!-- 后台管理系统  -->
 	<bean id="adminLoginAction" class="com.likits.action.admin.LoginAction">

@@ -28,6 +28,8 @@
 				<value>com.likits.entity.admin.AdminRole</value>
 				<value>com.likits.entity.front.Team</value>
 				<value>com.likits.entity.front.User</value>
+				<value>com.likits.entity.front.Article</value>
+				
 				<!-- 
 				<value>com.ly.entity.post</value> 直接加实体类
 				 -->

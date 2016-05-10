@@ -25,4 +25,9 @@ public class Constances {
 	  public final static String EMAIL_IS_NOT_ACTIVE = "邮箱还未激活！请到注册邮箱中查看邮件进行激活！";
 	  public final static String USER_IS_LOCK = "输入密码错误达到5次！";
 	  
+	  
+	 
+	  public static final int PAGE_ITEM_LIMIT = 15;
+	  public static final int PAGE_COUNT_LIMIT = 10;
+	  
 }
