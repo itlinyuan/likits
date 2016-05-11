@@ -79,7 +79,7 @@
 						</ul>
 					</li>
 					<li class="top_menu">
-						<a class="top_menu_link" href="#">展示区</a>
+						<a class="top_menu_link" href="exhibition">展示区</a>
 						<ul class="top_choice">
 							<li><a href="#">广场</a></li>
 							<li><a href="#">我的关注</a></li>

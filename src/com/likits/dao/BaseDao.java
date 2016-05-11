@@ -61,4 +61,18 @@ public abstract class BaseDao<T, PK extends Serializable> extends
   public void refresh(T entity){
 	getHibernateTemplate().refresh(entity);
   }
+  
+  @SuppressWarnings("unchecked")
+  public int count(String queryString) {
+	  List<Integer> counts = (List<Integer>)getHibernateTemplate().find(queryString);
+	  return counts.get(0);
+  }
+  
+  public List<T> findBylimit(String queryString, int limit) {
+	  int defaultmaxResults = getHibernateTemplate().getMaxResults();  
+	  getHibernateTemplate().setMaxResults(limit);  
+	  List<T> result = (List<T>) getHibernateTemplate().find(queryString);
+	  getHibernateTemplate().setMaxResults(defaultmaxResults);
+	  return result;
+  }
 }

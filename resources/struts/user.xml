@@ -32,6 +32,12 @@
         <action name="userLogout"  
             class="registerAndLoginAction" method="logout">  
         </action>
+        
+        <action name="exhibition" class="exhibitionAction">
+        	<result name="success">/exhibition.jsp</result>
+        	<result name="error">/404-page.jsp</result>	
+        </action>
+        
 	</package>
 	
 </struts>

@@ -14,5 +14,9 @@
 	<bean id="adminUserDao" class="com.likits.dao.admin.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
-
+	
+	<bean id="articleDao" class="com.likits.dao.front.impl.ArticleDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	
 </beans>
