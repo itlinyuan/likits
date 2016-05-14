@@ -8,6 +8,10 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="true" />
-	<constant name="struts.action.extension" value="," />
+	
+	<!-- 解决struts和servlet不能共存方法之一 -->
+	<constant name="struts.action.extension" value="action"></constant>
+	
+
 	<constant name="struts.configuration.xml.reload" value="true"/> 
 </struts>
