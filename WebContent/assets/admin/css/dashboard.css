@@ -1,0 +1,25 @@
+/* Easy UI layout*/
+#north_layout{
+    height: 60px;
+}
+
+/* South style */
+#south_layout{
+    height:50px;
+}
+
+/* West style*/
+#west_layout{
+    width: 250px;
+}
+
+#dashframe{
+    width: 100%;
+    height: 100%;
+}
+
+#footer{
+    margin: 10px auto;
+    font-size: 15px;
+    text-align: center
+}
