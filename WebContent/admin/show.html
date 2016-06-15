@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+    <link rel="stylesheet" type="text/css" href="../assets/admin/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/admin/themes/icon.css">
+    <link rel="stylesheet" href="../assets/admin/css/show.css"/>
+</head>
+<body>
+<div id="tabsMenu" class="easyui-tabs" data-options="border:false">
+
+    <div title="待审核">
+
+        <table id="check" class="easyui-datagrid" style="width: 100%; height: 100% ; max-height: 800px"
+               url="data.json"
+               toolbar="#check-toolbar" pagination="true"
+               rownumbers="true" fitColumns="true" singleSelect="false">
+            <thead>
+            <tr>
+                <th data-options="field:'ck',checkbox:true"></th>
+                <th field="id" width="2">ID</th>
+                <th field="title" width="2">标题</th>
+                <th field="category" width="2">类别</th>
+                <th field="publishTime" width="3">发布时间</th>
+                <th field="content" width="5">内容</th>
+                <th field="reader" width="2">阅读数</th>
+                <th field="starCounter" width="2">点赞数</th>
+                <th field="user" width="3">发布者</th>
+                <th field="tag" width="3">标签</th>
+                <th field="coverImage" width="2">封面图片</th>
+            </tr>
+            </thead>
+        </table>
+
+        <div id="check-toolbar">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="normalCheck()">普通审核</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="multipleCheck()">批量审核</a>
+        </div>
+
+        <div id="check-dlg" class="easyui-dialog" style="padding:10px 20px"
+             closed="true" buttons="#check-dlg-buttons" modal="true">
+            <div class="ftitle">文章信息</div>
+            <form id="fm" method="post" novalidate>
+                <div class="fitem">
+                    <label>ID：</label>
+                    <input name="id" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>标题：</label>
+                    <input name="title" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>类别：</label>
+                    <input name="category" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>发布时间：</label>
+                    <input name="pubilshTime" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>内容：</label>
+                    <input name="content" class="easyui-textbox" data-options="multiline:true" style="height:60px" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>阅读数：</label>
+                    <input name="reader" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>点赞数：</label>
+                    <input name="starCounter" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>发布者：</label>
+                    <input name="user" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>标签：</label>
+                    <input name="tag" class="easyui-textbox" editable="false">
+                </div>
+                <div class="fitem">
+                    <label>封面图片：</label>
+                    <input name="coverImage" class="easyui-textbox" editable="false">
+                </div>
+            </form>
+        </div>
+
+        <div id="check-dlg-buttons">
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">审核通过</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#check-dlg').dialog('close')" style="width:90px">审核不通过</a>
+        </div>
+
+    </div>
+
+    <div title="待推送">
+        <table id="push"></table>
+    </div>
+
+    <div title="已推送">
+        <table id="pushed"></table>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" src="../assets/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/admin/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../assets/admin/js/show.js"></script>
+<script type="text/javascript" src="../assets/admin/js/easyui-lang-zh_CN.js"></script>
+</html>

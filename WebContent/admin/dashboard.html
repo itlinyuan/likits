@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放，任何其他内容都*必须*跟随其后！ -->
+    <link rel="icon" href="../assets/images/icon.png">
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/admin/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../assets/admin/css/dashboard.css" rel="stylesheet">
+    <!-- Easy UI -->
+    <link rel="stylesheet" type="text/css" href="../assets/admin/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../assets/admin/themes/icon.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="dashboard.html">Likits 后台管理信息系统</a>
+            <img src="../assets/images/icon.png" alt="Logo"/>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-out"></span> 退出系统</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="easyui-layout" data-options="fit:true">
+
+    <div data-options="region:'north',split:false" id="north_layout"></div>
+
+    <div data-options="region:'west',split:true,collapsible:false" title="功能区" id="west_layout">
+        <ul class="easyui-tree">
+            <li>
+                <span><a href="dashboard.html">首页</a></span>
+                <ul>
+                    <li><a href="news.html" target="dashframe">资讯</a></li>
+                    <li>文章</li>
+                    <li>发布内容</li>
+                </ul>
+            </li>
+
+            <li><a href="show.html" target="dashframe">展示区</a></li>
+            <li>讨论区</li>
+            <li>用户管理</li>
+            <li>消息推送</li>
+
+        </ul>
+    </div>
+
+    <div data-options="region:'center'">
+        <iframe name="dashframe" id="dashframe" frameborder="0" scrolling="true"></iframe>
+    </div>
+
+    <div data-options="region:'south',split:true" id="south_layout">
+        <div id="footer">Likits co.,Ltd 版权所有</div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="../assets/admin/js/jquery.min.js"></script>
+<script src="../assets/admin/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../assets/admin/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../assets/admin/js/dashboard.js"></script>
+
+</body>
+</html>
